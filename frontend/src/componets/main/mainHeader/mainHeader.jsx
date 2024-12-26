@@ -1,7 +1,6 @@
-import { Link } from "react-router-dom";
 import ReactImg from "../../../assets/react.svg";
 import "./mainHeader.scss";
-import MainHeaderLink from "./main__header_link/main__header_link.jsx";
+import MainHeaderLink from "../mainHeaderLink/mainHeaderLink.jsx";
 
 function MainHeader() {
   return (
@@ -9,9 +8,9 @@ function MainHeader() {
       <h1 className="main__header_title">Neon Style</h1>
 
       <nav className="main__header_nav">
-        <MainHeaderLink text="Shop" />
-        <MainHeaderLink text="Cart" />
-        <MainHeaderLink text="Sale" />
+        <MainHeaderLink text="Videos" selected={true} />
+        <MainHeaderLink text="Likes" selected={false} />
+        <MainHeaderLink text="Most viewed" selected={false} />
       </nav>
 
       <div className="main__header_search">

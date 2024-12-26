@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import "./productCard.scss";
 
 function ProductCard({ img, title, description, id, gradient }) {
@@ -11,12 +10,11 @@ function ProductCard({ img, title, description, id, gradient }) {
       ) : (
         <></>
       )}
-      <img className="card__img" src={img} alt={description} />
+      <div className="card__photo">
+        <img className="card__img" src={img} alt={description} />
+      </div>
       <p className="card__title">{title}</p>
       <p className="card__description">{description}</p>
-      <Link to={id} className="card__button">
-        Buy
-      </Link>
     </div>
   );
 }

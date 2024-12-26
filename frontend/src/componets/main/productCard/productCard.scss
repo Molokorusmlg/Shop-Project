@@ -1,21 +1,24 @@
-@use "../../../../global.scss";
+@use "../../../global.scss";
 
 .catalog {
-  @include global.flex(row, flex-end, center);
+  @include global.flex(column, flex-end, center);
   padding: 20px;
-  margin-top: 100px;
-  &_grid {
-    display: grid;
-    grid-template-columns: 400px 400px 400px;
-    grid-template-rows: 650px 650px;
+  width: 100%;
+  padding: 5px 5px 40px 40px;
+  gap: 30px;
+
+  &__cards {
+    width: 100%;
+    @include global.flex(column, none, none);
+    gap: 30px;
   }
 }
 
 .card {
-  @include global.flex(column, none, center);
+  @include global.flex(row, none, center);
   gap: 18px;
-  width: 300px !important;
-  height: 600px;
+  width: 100% !important;
+
   background-color: #141414;
   border-radius: 7px;
   border: 1px solid #141414;
@@ -69,10 +72,14 @@
     z-index: 1;
   }
 
+  &__photo {
+    width: 300px;
+  }
+
   &__img {
     padding: 1px;
-    width: 300px;
-    height: 400px;
+    width: inherit;
+    height: 170px;
     border-radius: 7px 7px 0px 0px;
     opacity: 0.9;
     transition: 0.2s ease-in-out;
