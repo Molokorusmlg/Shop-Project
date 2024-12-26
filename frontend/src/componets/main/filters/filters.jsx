@@ -1,5 +1,5 @@
 import "./filters.scss";
-import arrow from "../../../../assets/img/arrowBackWhite.svg";
+import arrow from "../../../assets/img/arrowBackWhite.svg";
 import { useState } from "react";
 
 function FilterBlock() {
@@ -27,7 +27,7 @@ function FilterBlock() {
         />
       </div>
       <div className="filter__logo">
-        <h3 className="filter__logo_text">Neon Shop</h3>
+        <h3 className="filter__logo_text">Neon Style</h3>
       </div>
 
       <div className="filter__search">
@@ -43,7 +43,7 @@ function FilterBlock() {
 
       <div className="filter__buttons__block">
         <button className="filter__buttons__button" type="button">
-          Одежда
+          Сво
         </button>
         <button className="filter__buttons__button" type="button">
           Техника

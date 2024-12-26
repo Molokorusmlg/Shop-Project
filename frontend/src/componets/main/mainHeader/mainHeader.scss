@@ -6,7 +6,7 @@
   background-color: #272727;
   border-bottom: 2px solid #1b1b1b;
   border-radius: 0px 0px 7px 7px;
-  position: fixed;
+  position: sticky;
   top: 0;
   width: 100%;
   z-index: 2;
@@ -59,28 +59,5 @@
   &_nav {
     @include global.flex(row, space-between, center);
     gap: 55px;
-
-    &_link {
-      text-decoration: none;
-      color: #fff;
-      font-size: 20px;
-
-      &_block {
-        @include global.flex(column, center, center);
-
-        &:hover .main__header_nav_link_line {
-          opacity: 1;
-        }
-      }
-
-      &_line {
-        width: 100%;
-        height: 2px;
-        border-radius: 2px;
-        background-color: #646cff;
-        opacity: 0;
-        transition: 0.3s ease-in-out;
-      }
-    }
   }
 }

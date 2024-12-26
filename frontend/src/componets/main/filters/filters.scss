@@ -1,14 +1,16 @@
-@use "../../../../global.scss";
+@use "../../../global.scss";
 
 .filter {
   @include global.flex(column, none, center);
   position: fixed;
+  z-index: 4;
   top: 90px;
   left: 0px;
   height: 91vh;
   background-color: #292929;
   gap: 30px;
   transition: 0.4s ease-in-out;
+  border-right: 1px solid #646cff;
 
   &__arrow {
     &__img {
@@ -81,6 +83,7 @@
 }
 
 .filter__close {
+  border: 1px solid #292929;
   left: -375px;
 }
 

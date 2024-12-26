@@ -1,6 +1,6 @@
-import MainHeader from "./main_header/mainHeader";
+import MainHeader from "./mainHeader/mainHeader.jsx";
 import Catalog from "./catalog/catalog.jsx";
-import FilterBlock from "./catalog/filters/filters.jsx";
+import FilterBlock from "./filters/filters.jsx";
 
 function MainPage() {
   return (

@@ -71,6 +71,7 @@
 
   &__background {
     @include global.flex(column, center, center);
+    background-image: linear-gradient(to top, #212353, #3a3a3a);
     width: 100%;
     height: 100vh;
     gap: 20px;
