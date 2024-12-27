@@ -1,23 +1,28 @@
 import ProductCard from "../productCard/productCard";
 import Loading from "../loading/loading";
-import { data } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "../productCard/productCard.scss";
 
 function Catalog() {
-  const PRODUCTS_URL = "https://675ebc5f1f7ad24269967ed4.mockapi.io/Products";
-  const [cardList, setCardList] = useState([]);
-  const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [page, setPage] = useState(1);
+  const [cardList, setCardList] = useState([]);
 
-  const getAllCards = async () => {
+  const getAllCards = async (currentPage) => {
     try {
+      const PRODUCTS_URL = new URL(
+        "https://675ebc5f1f7ad24269967ed4.mockapi.io/Products"
+      );
+      PRODUCTS_URL.searchParams.append("limit", 5);
+      PRODUCTS_URL.searchParams.append("page", currentPage);
+
       const response = await fetch(PRODUCTS_URL);
       if (!response.ok) {
         throw new Error("404");
       }
-      const result = await response.json();
-      setCardList(result);
+      const responseJson = await response.json();
+
+      setCardList((prev) => [...prev, ...responseJson]);
     } catch (error) {
       setError(error);
     } finally {
@@ -26,8 +31,23 @@ function Catalog() {
   };
 
   useEffect(() => {
-    getAllCards();
-    console.log(isLoading);
+    getAllCards(page);
+  }, [page]);
+
+  const handleScroll = () => {
+    if (
+      window.innerHeight + document.documentElement.scrollTop ===
+      document.documentElement.offsetHeight
+    ) {
+      setPage((prevPage) => prevPage + 1);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (

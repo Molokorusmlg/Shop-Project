@@ -8,9 +8,9 @@ function MainHeader() {
       <h1 className="main__header_title">Neon Style</h1>
 
       <nav className="main__header_nav">
-        <MainHeaderLink text="Videos" selected={true} />
-        <MainHeaderLink text="Likes" selected={false} />
-        <MainHeaderLink text="Most viewed" selected={false} />
+        <MainHeaderLink namePath={"/main"} text="Videos" />
+        <MainHeaderLink namePath={"/likes"} text="Likes" />
+        <MainHeaderLink namePath={"/views"} text="Most viewed" />
       </nav>
 
       <div className="main__header_search">
