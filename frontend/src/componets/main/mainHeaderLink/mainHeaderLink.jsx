@@ -3,7 +3,13 @@ import cn from "classnames";
 import PropTypes from "prop-types";
 import "./mainHeaderLink.scss";
 
-function MainHeaderLink({ text, selected }) {
+function MainHeaderLink({ namePath, text }) {
+  let selected = false;
+
+  if (namePath == window.location.pathname) {
+    selected = true;
+  }
+
   const linkClass = cn("main__header_nav_link_line", {
     link__selected: selected,
   });
@@ -19,8 +25,8 @@ function MainHeaderLink({ text, selected }) {
 }
 
 MainHeaderLink.propTypes = {
+  namePath: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
-  selected: PropTypes.bool.isRequired,
 };
 
 export default MainHeaderLink;

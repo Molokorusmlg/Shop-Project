@@ -23,8 +23,6 @@ function RegistartionForm() {
     if (!response.ok) return;
 
     navigate("/main");
-
-    console.log(data);
   };
 
   const {
