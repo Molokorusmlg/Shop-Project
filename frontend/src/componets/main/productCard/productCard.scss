@@ -18,11 +18,11 @@
   @include global.flex(row, none, center);
   gap: 18px;
   width: 100% !important;
-
   background-color: #141414;
   border-radius: 7px;
   border: 1px solid #141414;
   transition: 0.3s ease-in-out;
+  text-decoration: none;
 
   &:hover {
     border-color: #646cff60;
@@ -33,6 +33,7 @@
   }
 
   &__title {
+    text-decoration: none;
     color: #c3c6ff;
     font-size: 15px;
     font-weight: 800;
@@ -67,6 +68,7 @@
   }
 
   &__description {
+    color: #fff;
     text-align: center;
     width: 80%;
     z-index: 1;

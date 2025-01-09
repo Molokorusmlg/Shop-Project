@@ -5,10 +5,13 @@ import "../productCard/productCard.scss";
 
 function Catalog() {
   const [isLoading, setIsLoading] = useState(true);
+  const [isRequestSend, setIsRequestSend] = useState(false);
   const [page, setPage] = useState(1);
   const [cardList, setCardList] = useState([]);
+  const [isFirstRender, setIsFirstRender] = useState(true);
 
   const getAllCards = async (currentPage) => {
+    setIsRequestSend(true);
     try {
       const PRODUCTS_URL = new URL(
         "https://675ebc5f1f7ad24269967ed4.mockapi.io/Products"
@@ -27,18 +30,16 @@ function Catalog() {
       setError(error);
     } finally {
       setIsLoading(false);
+      setIsRequestSend(false);
     }
   };
 
-  useEffect(() => {
-    getAllCards(page);
-  }, [page]);
-
   const handleScroll = () => {
-    if (
-      window.innerHeight + document.documentElement.scrollTop ===
-      document.documentElement.offsetHeight
-    ) {
+    const scrollPosition =
+      window.innerHeight + document.documentElement.scrollTop;
+    const threshold = document.documentElement.offsetHeight;
+
+    if (scrollPosition >= threshold && !isRequestSend) {
       setPage((prevPage) => prevPage + 1);
     }
   };
@@ -49,6 +50,14 @@ function Catalog() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  useEffect(() => {
+    if (!isFirstRender) {
+      getAllCards(page);
+    } else {
+      setIsFirstRender(false);
+    }
+  }, [page, isFirstRender]);
 
   return (
     <div className="catalog">
