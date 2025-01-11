@@ -1,0 +1,34 @@
+@use "../../global.scss";
+
+.index__title {
+  @include global.flex(column, center, center);
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 54px;
+  opacity: 0;
+  animation: opacity_on_loading_page 0.7s ease-in-out;
+  animation-fill-mode: forwards;
+
+  &__img {
+    position: absolute;
+    bottom: 40px;
+    width: 40px;
+    height: 40px;
+    rotate: -90deg;
+    opacity: 0;
+    animation: opacity_on_loading_page 0.7s ease-in-out;
+    animation-fill-mode: forwards;
+  }
+}
+
+@keyframes opacity_on_loading_page {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

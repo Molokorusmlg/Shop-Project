@@ -1,0 +1,63 @@
+@use "../../../global.scss";
+
+// .main__header {
+//   @include global.flex(row, space-between, center);
+//   padding: 10px;
+//   background-color: #272727;
+//   border-bottom: 2px solid #1b1b1b;
+//   border-radius: 0px 0px 7px 7px;
+//   position: sticky;
+//   top: 0;
+//   width: 100%;
+//   z-index: 2;
+
+//   &_title {
+//     background-image: linear-gradient(to right, #fff, #646cff);
+//     -webkit-background-clip: text;
+//     -webkit-text-fill-color: transparent;
+//     transition: 0.4s ease-in-out;
+//     padding: 10px;
+//     border: 1px solid #272727;
+//     border-radius: 7px;
+
+//     &:hover {
+//       border-color: #646cff48;
+//     }
+//   }
+
+//   &_profile {
+//     @include global.flex(row, space-between, center);
+//     background-color: #313131;
+//     padding: 10px;
+//     border-radius: 7px;
+//     gap: 25px;
+//     border: 1px solid #313131;
+//     transition: 0.4s ease-in-out;
+
+//     &:hover {
+//       border-color: #646cff;
+//     }
+//   }
+
+//   &_search {
+//     @include global.flex(column, none, none);
+
+//     &_input {
+//       padding: 10px;
+//       border-radius: 7px;
+//       border: 0;
+//       outline: none;
+//       border: 1px solid #1b1b1b;
+//       transition: 0.3s ease-in-out;
+
+//       &:hover {
+//         border-color: #646cff;
+//       }
+//     }
+//   }
+
+//   &_nav {
+//     @include global.flex(row, space-between, center);
+//     gap: 55px;
+//   }
+// }

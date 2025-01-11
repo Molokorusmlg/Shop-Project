@@ -1,9 +1,6 @@
-import { useState } from "react";
-import MyForm from "./componets/form/form";
+import MyForm from "./pages/form/Form";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import MainPage from "./componets/main/mainPage";
-import Card from "./componets/card/cardBase/card";
-
+import HomePage from "./pages/home/Home";
 import "./App.css";
 
 function App() {
@@ -12,8 +9,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<MyForm />} />
-          <Route path="/main" element={<MainPage />} />
-          <Route path="/card/:id" element={<Card />} />
+          <Route path="/main" element={<HomePage />} />
         </Routes>
       </Router>
     </div>
