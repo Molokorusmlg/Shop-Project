@@ -1,7 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import cn from "classnames";
+import { useNavigate } from "react-router-dom";
 import style from "../style.module.scss";
 
 function RegistartionForm() {

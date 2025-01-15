@@ -1,0 +1,38 @@
+@use "../../../../global.scss";
+
+.info__more {
+  &__title {
+    max-width: 50%;
+    word-wrap: break-word;
+  }
+
+  &__text {
+    font-size: 17px;
+    max-width: 50%;
+  }
+
+  &__block {
+    @include global.flex(row, space-between, none);
+    gap: 50px;
+  }
+
+  &__imges {
+    @include global.flex(column, none, none);
+    gap: 30px;
+
+    &__img {
+      width: 300px;
+      height: 300px;
+      border-radius: 7px;
+      transition: 0.4s ease-in-out;
+      opacity: 0.6;
+
+      &:hover {
+        -webkit-box-shadow: 0px 0px 100px 3px rgba(49, 30, 157, 0.48);
+        -moz-box-shadow: 0px 0px 100px 3px rgba(49, 30, 157, 0.48);
+        box-shadow: 0px 0px 100px 3px rgba(49, 30, 157, 0.48);
+        opacity: 1;
+      }
+    }
+  }
+}

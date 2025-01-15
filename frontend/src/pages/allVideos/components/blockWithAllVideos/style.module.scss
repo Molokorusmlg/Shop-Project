@@ -1,0 +1,8 @@
+@use "../../../../global.scss";
+
+.video__list {
+  padding: 20px;
+  @include global.flex(row, center, none);
+  gap: 50px;
+  flex-wrap: wrap;
+}

@@ -6,9 +6,8 @@ import AuthenticatioForm from "./formAuthenticatio/formAuthenticatio";
 
 const MyForm = () => {
   const [isRegister, setIsRegister] = useState(true);
-  const authClass = isRegister ? style.register : style.authenticatio;
-  const isAuthClassRegister = authClass == style.register;
-  console.log(isAuthClassRegister);
+  const authClass = isRegister ? "register" : "authenticatio";
+  const isAuthClassRegister = authClass === "register";
 
   const signIn = () => setIsRegister(false);
 

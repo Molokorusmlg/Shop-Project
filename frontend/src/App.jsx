@@ -1,6 +1,8 @@
 import MyForm from "./pages/form/Form";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/home/Home";
+import Videos from "./pages/videos/Videos";
+import AllVideos from "./pages/allVideos/AllVideos";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 
 function App() {
@@ -10,6 +12,8 @@ function App() {
         <Routes>
           <Route path="/" element={<MyForm />} />
           <Route path="/main" element={<HomePage />} />
+          <Route path="/videos" element={<Videos />} />
+          <Route path="/allvideo" element={<AllVideos />} />
         </Routes>
       </Router>
     </div>

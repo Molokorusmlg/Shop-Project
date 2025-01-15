@@ -1,6 +1,4 @@
 import { useForm } from "react-hook-form";
-import { useState } from "react";
-import cn from "classnames";
 import style from "../style.module.scss";
 
 function AuthenticatioForm() {
