@@ -4,20 +4,7 @@ import VideoCard from "../videoCard/VideoCard";
 function BlockWithAllVideos() {
   return (
     <div className={style.video__list}>
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
+      <VideoCard id={1} />
     </div>
   );
 }

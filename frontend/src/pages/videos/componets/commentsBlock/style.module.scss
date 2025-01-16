@@ -1,0 +1,7 @@
+@use "../../../../global.scss";
+
+.comments {
+  @include global.flex(column, none, none);
+  gap: 10px;
+  margin-top: 20px;
+}

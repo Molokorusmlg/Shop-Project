@@ -2,12 +2,19 @@ import style from "./style.module.scss";
 import Test_Img from "../../../../assets/img/1905year.jpg";
 import Test_User from "../../../../assets/img/telegram.png";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
-function VideoCard() {
+function VideoCard({ id }) {
   return (
-    <Link to={"/videos"} className={style.card}>
+    <Link to={`/videos/${id}`} className={style.card}>
       <div className={style.card__img}>
-        <img className={style.card__img} src={Test_Img} alt="video_prev" />
+        <img
+          className={style.card__img}
+          src={
+            "https://i.ytimg.com/vi/NDgTSUSu8-4/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLD1ybAbBKZetsXEJBakt3JonTEKCg"
+          }
+          alt="video_prev"
+        />
       </div>
 
       <div className={style.card__info}>
@@ -26,5 +33,9 @@ function VideoCard() {
     </Link>
   );
 }
+
+VideoCard.propTypes = {
+  id: PropTypes.number,
+};
 
 export default VideoCard;

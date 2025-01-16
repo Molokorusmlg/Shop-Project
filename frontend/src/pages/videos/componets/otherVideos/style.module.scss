@@ -1,0 +1,9 @@
+@use ".././../../../global.scss";
+
+.othervideos {
+  @include global.flex(column, none, none);
+  gap: 20px;
+  position: absolute;
+  right: 0px;
+  top: 80px;
+}

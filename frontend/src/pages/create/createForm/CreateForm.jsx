@@ -1,7 +1,5 @@
 import style from "./style.module.scss";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
-import cn from "classnames";
 
 function CreateForm() {
   const resetData = () => {
@@ -10,6 +8,7 @@ function CreateForm() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 

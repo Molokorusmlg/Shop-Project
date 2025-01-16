@@ -14,7 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MyForm />} />
           <Route path="/main" element={<HomePage />} />
-          <Route path="/videos" element={<Videos />} />
+          <Route path="/videos/:id" element={<Videos />} />
           <Route path="/allvideo" element={<AllVideos />} />
           <Route path="/profile" element={<UserProfile />} />
           <Route path="/create" element={<Create />} />

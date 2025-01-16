@@ -13,7 +13,8 @@ function Header() {
 
   const location = useLocation();
   const isLocationVideo =
-    location.pathname === "/videos" || location.pathname === "/allvideo";
+    location.pathname.match(/^\/videos\/\d+$/) ||
+    location.pathname === "/allvideo";
 
   const handleBurger = () => {
     setIsBurgerOpen((prev) => !prev);
