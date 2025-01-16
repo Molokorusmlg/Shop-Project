@@ -55,6 +55,7 @@
     gap: 25px;
     border: 1px solid #313131;
     transition: 0.4s ease-in-out;
+    text-decoration: none;
 
     &:hover {
       border-color: #646cff;
@@ -67,6 +68,7 @@
     }
 
     &__user {
+      color: #fff;
       font-size: 10px;
     }
   }

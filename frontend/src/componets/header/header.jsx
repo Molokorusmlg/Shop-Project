@@ -9,7 +9,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 function Header() {
-  const [isBurgerOpen, setIsBurgerOpen] = useState(false);
+  const [isBurgerOpen, setIsBurgerOpen] = useState(true);
 
   const location = useLocation();
   const isLocationVideo =
@@ -42,14 +42,14 @@ function Header() {
         />
       </div>
 
-      <div className={style.main__header__profile}>
+      <Link to={"/profile"} className={style.main__header__profile}>
         <img
           src={ReactImg}
           alt="user avatar"
           className={style.main__header__profile__img}
         />
         <p className={style.main__header__profile__user}>Username</p>
-      </div>
+      </Link>
       <BurgerMeny isBurgerOpen={isBurgerOpen} />
     </div>
   );

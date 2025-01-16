@@ -2,6 +2,7 @@ import style from "./style.module.scss";
 import CloseImg from "../.././../../assets/img/arrowBackWhite.svg";
 import cn from "classnames";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function SettingsBlock() {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
@@ -112,6 +113,10 @@ function SettingsBlock() {
       <div className={style.settings__button}>
         <p className={style.settings__button__text}>Применить</p>
       </div>
+
+      <Link to={"/create"} className={style.settings__button}>
+        <p className={style.settings__button__text}>Создать</p>
+      </Link>
 
       <p className={style.settings__disclaimer}>
         2025 Дима Якорнов. Все права защищены. Текст, изображения, графика и

@@ -23,7 +23,7 @@ function BurgerMeny({ isBurgerOpen }) {
 }
 
 BurgerMeny.propTypes = {
-  isBurgerOpen: PropTypes.string.isRequired,
+  isBurgerOpen: PropTypes.bool.isRequired,
 };
 
 export default BurgerMeny;

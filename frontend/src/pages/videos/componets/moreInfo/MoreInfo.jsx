@@ -1,5 +1,6 @@
 import style from "./style.module.scss";
 import TestFoto from "../../../../assets/img/1905year.jpg";
+import cn from "classnames";
 
 function MoreInfo() {
   return (
@@ -36,7 +37,9 @@ function MoreInfo() {
             alt="img-building"
           />
           <img
-            className={style.info__more__imges__img}
+            className={cn(style.info__more__imges__img, {
+              [style.img__open]: false,
+            })}
             src={TestFoto}
             alt="img-building"
           />
