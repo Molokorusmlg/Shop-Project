@@ -6,4 +6,21 @@
   position: absolute;
   right: 0px;
   top: 80px;
+  overflow: auto;
+  height: 100vh;
+  border: 3px solid #131313;
+  transition: 0.3s ease-in-out;
+  border-radius: 7px;
+
+  &:hover {
+    border-color: #646cff42;
+  }
+}
+
+.othervideos {
+  scrollbar-width: none;
+}
+
+.othervideos::-webkit-scrollbar {
+  display: none;
 }

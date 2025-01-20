@@ -1,4 +1,6 @@
-function VideoPlayer() {
+import PropTypes from "prop-types";
+
+function VideoPlayer({ src }) {
   return (
     <div
       style={{
@@ -9,7 +11,7 @@ function VideoPlayer() {
       }}
     >
       <iframe
-        src="https://kinescope.io/embed/4orsEgce2gFYxMV85ycWkt"
+        src={src}
         allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write;"
         style={{
           position: "absolute",
@@ -24,5 +26,9 @@ function VideoPlayer() {
     </div>
   );
 }
+
+VideoPlayer.propTypes = {
+  src: PropTypes.string.isRequired,
+};
 
 export default VideoPlayer;

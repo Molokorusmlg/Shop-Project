@@ -1,15 +1,44 @@
 import style from "./style.module.scss";
 import CloseImg from "../.././../../assets/img/arrowBackWhite.svg";
 import cn from "classnames";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
-function SettingsBlock() {
+function SettingsBlock({ setFilterRequest, setSortRequest }) {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
 
-  const changeOpenState = () => {
+  const GetSortRequest = useCallback(() => {
+    const sortConfig = [
+      { id: "views", value: "views" },
+      { id: "likes", value: "likes" },
+    ];
+
+    const selectedSort = sortConfig
+      .filter((sort) => document.getElementById(sort.id).checked)
+      .map((sort) => sort.value);
+
+    setSortRequest(selectedSort);
+  });
+
+  const GetFilterRequest = useCallback(() => {
+    const filterConfig = [
+      { id: "building", value: "building" },
+      { id: "parks", value: "parks" },
+      { id: "life", value: "life" },
+      { id: "temple", value: "temple" },
+    ];
+
+    const selectedFilters = filterConfig
+      .filter((filter) => document.getElementById(filter.id).checked)
+      .map((filter) => filter.value);
+
+    setFilterRequest(selectedFilters);
+  });
+
+  const changeOpenState = useCallback(() => {
     setIsSettingsOpen((prev) => !prev);
-  };
+  });
 
   return (
     <div
@@ -31,25 +60,25 @@ function SettingsBlock() {
         </div>
 
         <label className={style.container}>
-          <input type="checkbox" />
+          <input id="building" type="checkbox" onChange={GetFilterRequest} />
           <div className={style.checkmark}></div>
           <p className={style.settings__label}>Здания</p>
         </label>
 
         <label className={style.container}>
-          <input type="checkbox" />
+          <input id="parks" type="checkbox" onChange={GetFilterRequest} />
           <div className={style.checkmark}></div>
           <p className={style.settings__label}>Парки</p>
         </label>
 
         <label className={style.container}>
-          <input type="checkbox" />
+          <input id="life" type="checkbox" onChange={GetFilterRequest} />
           <div className={style.checkmark}></div>
           <p className={style.settings__label}>Жизнь</p>
         </label>
 
         <label className={style.container}>
-          <input type="checkbox" />
+          <input id="temple" type="checkbox" onChange={GetFilterRequest} />
           <div className={style.checkmark}></div>
           <p className={style.settings__label}>Храмы</p>
         </label>
@@ -66,12 +95,13 @@ function SettingsBlock() {
             <input
               type="radio"
               className={style.settings__sort__radio__button__input}
-              id="radio1"
+              id="likes"
               name="radio-group"
+              onChange={GetSortRequest}
             />
             <label
               className={style.settings__sort__radio__button__label}
-              htmlFor="radio1"
+              htmlFor="likes"
             >
               <span className={style.settings__sort__radio__button__custom} />
               Лайкам
@@ -81,30 +111,16 @@ function SettingsBlock() {
             <input
               type="radio"
               className={style.settings__sort__radio__button__input}
-              id="radio2"
+              id="views"
               name="radio-group"
+              onChange={GetSortRequest}
             />
             <label
               className={style.settings__sort__radio__button__label}
-              htmlFor="radio2"
+              htmlFor="views"
             >
               <span className={style.settings__sort__radio__button__custom} />
               Просмотры
-            </label>
-          </div>
-          <div className={style.settings__sort__radio__button}>
-            <input
-              type="radio"
-              className={style.settings__sort__radio__button__input}
-              id="radio3"
-              name="radio-group"
-            />
-            <label
-              className={style.settings__sort__radio__button__label}
-              htmlFor="radio3"
-            >
-              <span className={style.settings__sort__radio__button__custom} />
-              Дата загрузки
             </label>
           </div>
         </div>
@@ -137,5 +153,10 @@ function SettingsBlock() {
     </div>
   );
 }
+
+SettingsBlock.propTypes = {
+  setFilterRequest: PropTypes.func.isRequired,
+  setSortRequest: PropTypes.func.isRequired,
+};
 
 export default SettingsBlock;

@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 
 function OtherVideoLink({ id, title, img, username }) {
   return (
-    <Link to={"/videos"} className={style.minivideo}>
+    <Link to={`/videos/${id}`} className={style.minivideo}>
       <div className={style.minivideo__img}>
         <img
           className={style.minivideo__img__photo}
@@ -23,10 +23,10 @@ function OtherVideoLink({ id, title, img, username }) {
 }
 
 OtherVideoLink.propTypes = {
-  id: PropTypes.number,
-  title: PropTypes.string,
-  img: PropTypes.string,
-  username: PropTypes.string,
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  img: PropTypes.string.isRequired,
+  username: PropTypes.string.isRequired,
 };
 
 export default OtherVideoLink;

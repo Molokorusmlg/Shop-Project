@@ -1,30 +1,47 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import style from "./style.module.scss";
 import LikeSVG from "../../../../assets/img/Like.svg";
 import LikeClickedSVG from "../../../../assets/img/LikeClicked.svg";
 import cn from "classnames";
+import PropTypes from "prop-types";
+import { API_URL } from "../../../../constants";
 
-function LikeBlock() {
+function LikeBlock({ likes, id }) {
   const [isLikedLike, setIsLikedLike] = useState(false);
   const [isLikedDisLike, setIsLikedDisLike] = useState(false);
 
-  const changeLikeImg = () => {
+  const updateLikes = useCallback(async () => {
+    const response = await fetch(`${API_URL}${id}/comments`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        likes: isLikedLike ? likes - 1 : likes + 1,
+      }),
+    });
+    const data = await response.json();
+    console.log(data);
+  });
+
+  const changeLikeImg = useCallback(() => {
     if (isLikedDisLike) {
       setIsLikedDisLike((prev) => !prev);
       setIsLikedLike((prev) => !prev);
     } else {
       setIsLikedLike((prev) => !prev);
     }
-  };
+  });
 
-  const changeDisLikeImg = () => {
+  const changeDisLikeImg = useCallback(() => {
     if (isLikedLike) {
       setIsLikedDisLike((prev) => !prev);
       setIsLikedLike((prev) => !prev);
     } else {
       setIsLikedDisLike((prev) => !prev);
     }
-  };
+    updateLikes();
+  });
 
   return (
     <div className={style.info__likes}>
@@ -34,7 +51,7 @@ function LikeBlock() {
           src={isLikedLike ? LikeClickedSVG : LikeSVG}
           alt="like this video"
         />
-        <p className={style.info__likes__couter}>192</p>
+        <p className={style.info__likes__couter}>{likes || "0"}</p>
       </div>
       <div className={style.info__dislike} onClick={changeDisLikeImg}>
         <img
@@ -48,5 +65,10 @@ function LikeBlock() {
     </div>
   );
 }
+
+LikeBlock.propTypes = {
+  id: PropTypes.string.isRequired,
+  likes: PropTypes.number.isRequired,
+};
 
 export default LikeBlock;
