@@ -20,8 +20,11 @@
     opacity: 1;
   }
 
-  @include global.adaptiv(mobile) {
+  @include global.adaptiv(large-pc) {
     width: auto;
+  }
+
+  @include global.adaptiv(mobile) {
     height: 100px;
   }
 

@@ -6,6 +6,7 @@
   border-radius: 7px;
   text-decoration: none;
   color: #fff;
+  cursor: pointer;
 
   &:hover .card__img {
     opacity: 1;
@@ -24,28 +25,34 @@
     border-radius: 7px;
     opacity: 0.8;
     transition: 0.3s ease-in-out;
+    cursor: pointer;
   }
 
   &__info {
     padding: 5px;
+    cursor: pointer;
 
     &__title {
       font-size: 17px;
+      cursor: pointer;
     }
 
     &__text {
       font-size: 15px;
+      cursor: pointer;
     }
 
     &__profile {
       @include global.flex(row, none, center);
       gap: 10px;
+      cursor: pointer;
     }
 
     &__avatar {
       width: 30px;
       height: 30px;
       border-radius: 50%;
+      cursor: pointer;
     }
   }
 }

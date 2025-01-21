@@ -22,7 +22,7 @@ function LikeBlock({ likes, id }) {
     });
     const data = await response.json();
     console.log(data);
-  });
+  }, [isLikedLike, isLikedDisLike]);
 
   const changeLikeImg = useCallback(() => {
     if (isLikedDisLike) {
@@ -31,7 +31,7 @@ function LikeBlock({ likes, id }) {
     } else {
       setIsLikedLike((prev) => !prev);
     }
-  });
+  }, [isLikedDisLike, isLikedLike]);
 
   const changeDisLikeImg = useCallback(() => {
     if (isLikedLike) {
@@ -41,7 +41,7 @@ function LikeBlock({ likes, id }) {
       setIsLikedDisLike((prev) => !prev);
     }
     updateLikes();
-  });
+  }, [updateLikes]);
 
   return (
     <div className={style.info__likes}>

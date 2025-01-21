@@ -23,7 +23,7 @@ function VideoInfoBlock({
 
   const showDescription = useCallback(() => {
     setIsDescriptionOpen((prev) => !prev);
-  });
+  }, []);
 
   return (
     <div

@@ -1,7 +1,7 @@
 import style from "./style.module.scss";
 import Header from "../../componets/header/header";
 import Footer from "../../componets/footer/Footer";
-import UserInfoBlock from "./components/userInfoBlock/userInfoBlock";
+import UserInfoBlock from "./components/userInfoBlock/UserInfoBlock";
 
 function UserProfile() {
   return (

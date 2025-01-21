@@ -24,7 +24,7 @@ function Comment({ text, avatar, username, id, videoId }) {
       .catch((error) => {
         console.error("Error:", error);
       });
-  });
+  }, []);
 
   return (
     <div className={style.comment}>

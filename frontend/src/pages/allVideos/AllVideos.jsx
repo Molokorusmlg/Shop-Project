@@ -8,6 +8,7 @@ import { useEffect, useState, useCallback } from "react";
 import { API_URL } from "../../constants";
 import Loading from "../../componets/loading/Loading";
 import NotFoundBlock from "../../componets/notFoundBlock/NotFoundBlock";
+import { useGetFilterString } from "./hooks/useGetFilterString";
 
 function AllVideos() {
   const [videoList, setVideoList] = useState([]);
@@ -17,45 +18,39 @@ function AllVideos() {
   const [sortRequest, setSortRequest] = useState("");
   const [error, setError] = useState(false);
 
-  const fetchAllVideos = useCallback(async (page = 1) => {
-    setIsLoading(true);
-    setError(false);
+  const fetchAllVideos = useCallback(
+    async (page = 1) => {
+      setIsLoading(true);
+      setError(false);
 
-    const getFilterString = (filterRequerst) => {
-      if (!filterRequerst.length) return "";
-      return filterRequerst.length === 1
-        ? filterRequerst[0]
-        : filterRequerst.join("||");
-    };
+      const filter = useGetFilterString(filterRequerst);
+      const sort = sortRequest[0];
 
-    const filter = getFilterString(filterRequerst);
-    const sort = sortRequest[0];
+      const request = `${API_URL}?title=${searchRequest}&limit=12&page=${page}&type=${filter}&sortBy=${sort}`;
 
-    const request = `${API_URL}?title=${searchRequest}&limit=12&page=${page}&type=${filter}&sortBy=${sort}`;
+      try {
+        const response = await fetch(request);
 
-    try {
-      const response = await fetch(request);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        const data = await response.json();
+        setVideoList((prev) => {
+          const existingIds = new Set(prev.map((video) => video.id));
+          const newVideos = data.filter((video) => !existingIds.has(video.id));
+          return [...prev, ...newVideos];
+        });
+      } catch (error) {
+        console.log(error);
+
+        setError(true);
+      } finally {
+        setIsLoading(false);
       }
-
-      const data = await response.json();
-      setVideoList((prev) => {
-        const existingIds = new Set(prev.map((video) => video.id));
-        const newVideos = data.filter((video) => !existingIds.has(video.id));
-        return [...prev, ...newVideos];
-      });
-    } catch (error) {
-      setError(true);
-    } finally {
-      setIsLoading(false);
-    }
-  });
-
-  useEffect(() => {
-    fetchAllVideos();
-  }, [searchRequest, filterRequerst, sortRequest]);
+    },
+    [searchRequest, filterRequerst, sortRequest]
+  );
 
   useEffect(() => {
     setVideoList([]);
@@ -84,14 +79,13 @@ function AllVideos() {
         {error ? (
           <NotFoundBlock />
         ) : (
-          <BlockWithAllVideos videoList={videoList} />
+          <BlockWithAllVideos videoList={videoList} isLoading={isLoading} />
         )}
         <SettingsBlock
           setFilterRequest={setFilterRequest}
           setSortRequest={setSortRequest}
         />
       </section>
-      <Loading isLoading={isLoading} />
       <Footer />
     </main>
   );

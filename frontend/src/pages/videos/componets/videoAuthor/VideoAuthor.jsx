@@ -1,6 +1,5 @@
 import style from "./style.module.scss";
 import PropTypes from "prop-types";
-import UserIcon from "../../../../assets/img/User.svg";
 
 function VideoAuthor({ avatar, username }) {
   return (

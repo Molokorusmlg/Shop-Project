@@ -18,9 +18,10 @@ function CommentsBlock({ id }) {
       const data = await response.json();
       setComments(data);
     } catch (error) {
+      console.log(error);
       setError(true);
     }
-  });
+  }, [id]);
 
   const createComment = useCallback(async () => {
     const username = document.getElementById("username").value;
@@ -45,7 +46,6 @@ function CommentsBlock({ id }) {
         throw new Error("Network response was not ok");
       }
 
-      const data = await response.json();
       fetchComments();
     } catch (error) {
       console.error("Error:", error);

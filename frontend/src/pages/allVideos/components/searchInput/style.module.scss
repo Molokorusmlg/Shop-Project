@@ -12,6 +12,7 @@
     height: 40px;
     border-radius: 12px;
     gap: 3px;
+    cursor: pointer;
 
     &:hover .all__video__search__block__icon__block {
       border-color: #646cff;
@@ -27,16 +28,19 @@
       padding-left: 15px;
       padding-right: 5px;
       font-size: 15px;
+      cursor: pointer;
 
       &:focus {
         font-size: 16px;
         outline: none;
+        cursor: default;
       }
     }
 
     &__icon {
       width: 30px;
       height: 30px;
+      cursor: pointer;
 
       &__block {
         @include global.flex(row, center, center);
@@ -46,6 +50,7 @@
         border: 2px solid #646cff3b;
         border-radius: 0 12px 12px 0;
         transition: 0.3s ease-in-out;
+        cursor: pointer;
       }
     }
   }

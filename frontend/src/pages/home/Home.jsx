@@ -1,6 +1,6 @@
 import Header from "../../componets/header/header";
 import HomeBackground from "./components/homeBackground/homeBackground";
-import CityTitle from "./components/CityTitle/CityTitle";
+import CityTitle from "./components/cityTitle/CityTitle";
 import InfoAboutCity from "./components/infoAboutCity/InfoAboutCity";
 import CityMap from "./components/cityMap/CityMap";
 import Footer from "../../componets/footer/Footer";

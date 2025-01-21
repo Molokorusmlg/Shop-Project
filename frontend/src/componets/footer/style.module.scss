@@ -67,6 +67,7 @@
     &__block {
       @include global.flex(row, space-between, center);
       width: 50%;
+      cursor: pointer;
 
       @include global.adaptiv(table) {
         flex-direction: column;
@@ -79,6 +80,7 @@
     @include global.flex(column, center, center);
     width: 200px;
     text-decoration: none;
+    cursor: pointer;
 
     @include global.adaptiv(table) {
       width: 170px;
@@ -95,11 +97,13 @@
       background-color: #646cff;
       opacity: 0.3;
       transition: 0.3s ease-in-out;
+      cursor: pointer;
     }
 
     &__text {
       font-size: 30px;
       font-weight: 800;
+      cursor: pointer;
       color: #fff;
 
       @include global.adaptiv(table) {

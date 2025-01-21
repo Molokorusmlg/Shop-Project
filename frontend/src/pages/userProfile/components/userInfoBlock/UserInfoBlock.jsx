@@ -3,11 +3,6 @@ import TestImg from "../../../../assets/img/telegram.png";
 import PropTypes from "prop-types";
 
 function UserInfoBlock({ name, surname, email, password }) {
-  // name = "Иван";
-  // surname = "Иванов";
-  // email = "ivanov@mail.ru";
-  // password = "123456";
-
   return (
     <div className={style.user__info}>
       <div className={style.user__info__tille__block}>

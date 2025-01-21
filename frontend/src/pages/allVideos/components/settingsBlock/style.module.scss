@@ -24,6 +24,7 @@
     border-radius: 50px;
     width: 50px;
     height: 50px;
+    cursor: pointer;
 
     @include global.adaptiv(mobile) {
       width: 30px;
@@ -43,6 +44,7 @@
 
       &__reverse {
         rotate: 180deg;
+        cursor: pointer;
       }
     }
   }
@@ -78,6 +80,7 @@
 
     &__text {
       font-weight: 700;
+      cursor: pointer;
 
       @include global.adaptiv(table) {
         font-size: 10px;
@@ -97,6 +100,7 @@
       gap: 10px;
       padding: 5px;
       border-radius: 7px;
+      cursor: pointer;
 
       &:hover .settings__sort__line {
         opacity: 1;
@@ -111,11 +115,13 @@
       width: 60%;
       opacity: 0.6;
       transition: 0.3s ease-in-out;
+      cursor: pointer;
     }
 
     &__radio__button__container {
       @include global.flex(column, space-between, none);
       width: 90%;
+      cursor: pointer;
     }
 
     &__radio__button {
@@ -160,6 +166,7 @@
         border-radius: 50%;
         border: 2px solid #555;
         transition: all 0.3s ease;
+        cursor: pointer;
       }
 
       &__input:checked + &__label .settings__sort__radio__button__custom {
@@ -167,16 +174,19 @@
         border-color: transparent;
         transform: scale(0.8);
         box-shadow: 0 0 20px rgba(76, 139, 245, 0.5);
+        cursor: pointer;
       }
 
       &__input:checked + &__label {
         color: #4c8bf5;
+        cursor: pointer;
       }
     }
   }
 
   &__label {
     font-size: 15px;
+    cursor: pointer;
   }
 
   &__type {
@@ -188,10 +198,12 @@
       width: 60%;
       opacity: 0.6;
       transition: 0.3s ease-in-out;
+      cursor: pointer;
     }
 
     &__title {
       text-align: center;
+      cursor: pointer;
     }
 
     &__block {
@@ -201,6 +213,7 @@
       gap: 10px;
       padding: 5px;
       border-radius: 7px;
+      cursor: pointer;
 
       &:hover .settings__type__line {
         opacity: 1;
@@ -210,6 +223,7 @@
 
   &__title {
     @include global.flex(column, center, center);
+    cursor: pointer;
 
     &__line {
       width: 100%;
@@ -219,6 +233,7 @@
       width: 80%;
       opacity: 0.6;
       transition: 0.3s ease-in-out;
+      cursor: pointer;
     }
   }
 }

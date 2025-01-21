@@ -4,7 +4,8 @@
   @include global.flex(column, center, center);
   width: 50%;
   height: 70%;
-  min-width: 6x 00px;
+  min-width: 600px;
+  min-height: 650px;
   background-color: #111;
   border-radius: 7px;
   transition: 0.3s ease-in-out;
@@ -19,6 +20,13 @@
 
   &:hover .user__info__title__line {
     opacity: 1;
+  }
+
+  @include global.adaptiv(big_mobile) {
+    height: auto;
+    width: auto;
+    min-width: 1px;
+    padding: 10px;
   }
 
   &__button {
@@ -64,6 +72,10 @@
     @include global.flex(row, space-between, center);
     width: 50%;
     margin-top: 30px;
+
+    @include global.adaptiv(big_mobile) {
+      flex-direction: column;
+    }
 
     &__input {
       padding: 5px 10px 5px 10px;

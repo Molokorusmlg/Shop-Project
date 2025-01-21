@@ -29,7 +29,6 @@ function CreateForm() {
         throw new Error("Failed to create video");
       }
 
-      const result = await response.json();
       setIsLoading(false);
       reset();
     } catch (error) {

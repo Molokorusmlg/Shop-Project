@@ -15,6 +15,7 @@ function OtherVideos({ ignoreid }) {
     async (pageNum = 1) => {
       setIsLoading(true);
       setError(false);
+      console.log(`Page number dev info - ${page}`);
 
       try {
         const response = await fetch(`${API_URL}?page=${pageNum}&limit=10`);
@@ -29,6 +30,7 @@ function OtherVideos({ ignoreid }) {
           return [...prev, ...newVideos];
         });
       } catch (error) {
+        console.log(error);
         setError(true);
       } finally {
         setIsLoading(false);

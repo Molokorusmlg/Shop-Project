@@ -19,7 +19,7 @@ function SettingsBlock({ setFilterRequest, setSortRequest }) {
       .map((sort) => sort.value);
 
     setSortRequest(selectedSort);
-  });
+  }, []);
 
   const GetFilterRequest = useCallback(() => {
     const filterConfig = [
@@ -34,11 +34,11 @@ function SettingsBlock({ setFilterRequest, setSortRequest }) {
       .map((filter) => filter.value);
 
     setFilterRequest(selectedFilters);
-  });
+  }, []);
 
   const changeOpenState = useCallback(() => {
     setIsSettingsOpen((prev) => !prev);
-  });
+  }, []);
 
   return (
     <div

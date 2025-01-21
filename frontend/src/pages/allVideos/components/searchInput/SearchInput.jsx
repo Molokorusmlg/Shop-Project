@@ -3,9 +3,9 @@ import style from "./style.module.scss";
 import PropTypes from "prop-types";
 
 function SearchInput({ setSearchRequest }) {
-  const handleSearch = (e) => {
-    setSearchRequest(e.target.value);
-  };
+  // const handleSearch = (e) => {
+  //   setSearchRequest(e.target.value);
+  // };
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
