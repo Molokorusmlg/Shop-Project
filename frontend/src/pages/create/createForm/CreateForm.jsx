@@ -1,19 +1,40 @@
 import style from "./style.module.scss";
 import { useForm } from "react-hook-form";
+import { API_URL } from "../../../constants";
+import { useState } from "react";
+import Loading from "../../../componets/loading/Loading";
 
 function CreateForm() {
-  const resetData = () => {
-    reset();
-  };
   const {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const onSubmit = async (data) => {
+    setIsLoading(true);
+    try {
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to create video");
+      }
+
+      const result = await response.json();
+      setIsLoading(false);
+      reset();
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   return (
@@ -43,6 +64,7 @@ function CreateForm() {
             {...register("title", { required: "Title is required" })}
           />
         </div>
+
         <div className={style.create__form__input__block}>
           {errors.description && (
             <label
@@ -61,62 +83,6 @@ function CreateForm() {
             {...register("description", {
               required: "Description is required",
             })}
-          />
-        </div>
-        <div className={style.create__form__input__block}>
-          {errors.image && (
-            <label
-              htmlFor="image-1"
-              className={`${style.create__form__error} ${
-                errors.image ? style.visible : ""
-              }`}
-            >
-              {errors.image.message}
-            </label>
-          )}
-          <input
-            className={style.create__form__input}
-            placeholder="Ссылка на изображение"
-            id="image-1"
-            {...register("image", { required: "Image is required" })}
-          />
-        </div>
-
-        <div className={style.create__form__input__block}>
-          {errors.image && (
-            <label
-              htmlFor="image-2"
-              className={`${style.create__form__error} ${
-                errors.image ? style.visible : ""
-              }`}
-            >
-              {errors.image.message}
-            </label>
-          )}
-          <input
-            className={style.create__form__input}
-            placeholder="Ссылка на изображение 2"
-            id="image-2"
-            {...register("image", { required: "Image is required" })}
-          />
-        </div>
-
-        <div className={style.create__form__input__block}>
-          {errors.image && (
-            <label
-              htmlFor="image-3"
-              className={`${style.create__form__error} ${
-                errors.image ? style.visible : ""
-              }`}
-            >
-              {errors.image.message}
-            </label>
-          )}
-          <input
-            className={style.create__form__input}
-            placeholder="Ссылка на изображение 3"
-            id="image-3"
-            {...register("image", { required: "Image is required" })}
           />
         </div>
 
@@ -138,15 +104,50 @@ function CreateForm() {
             {...register("video", { required: "Video is required" })}
           />
         </div>
+
+        {Array.from({ length: 3 }, (_, index) => (
+          <div
+            className={style.create__form__input__block}
+            key={`image-${index + 1}`}
+          >
+            {errors[`img${index + 1}`] && (
+              <label
+                htmlFor={`img-${index + 1}`}
+                className={`${style.create__form__error} ${
+                  errors[`img${index + 1}`] ? style.visible : ""
+                }`}
+              >
+                {errors[`img${index + 1}`].message}
+              </label>
+            )}
+            <input
+              className={style.create__form__input}
+              placeholder={`Ссылка на изображение ${index + 1}`}
+              id={`img-${index + 1}`}
+              {...register(`img${index + 1}`, {
+                required: "Image is required",
+              })}
+            />
+          </div>
+        ))}
       </div>
       <div className={style.create__form__button__block}>
-        <button className={style.form__button} type="submit">
-          Создать
+        <button
+          className={style.form__button}
+          type="submit"
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? "Создание..." : "Создать"}
         </button>
-        <button onClick={resetData} className={style.form__button} type="reset">
+        <button
+          onClick={() => reset()}
+          className={style.form__button}
+          type="button"
+        >
           Очистить
         </button>
       </div>
+      {isLoading && <Loading />}
     </form>
   );
 }

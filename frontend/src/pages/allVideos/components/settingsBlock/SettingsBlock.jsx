@@ -126,10 +126,6 @@ function SettingsBlock({ setFilterRequest, setSortRequest }) {
         </div>
       </div>
 
-      <div className={style.settings__button}>
-        <p className={style.settings__button__text}>Применить</p>
-      </div>
-
       <Link to={"/create"} className={style.settings__button}>
         <p className={style.settings__button__text}>Создать</p>
       </Link>

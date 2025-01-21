@@ -7,6 +7,12 @@
   @include global.adaptiv("medium-pc") {
     width: 550px;
     height: 450px;
+    margin-top: 30px;
+  }
+
+  @include global.adaptiv(table) {
+    width: 350px;
+    height: 250px;
   }
 
   &__map__bg {
@@ -17,6 +23,11 @@
     @include global.adaptiv("medium-pc") {
       width: 550px;
       height: 450px;
+    }
+
+    @include global.adaptiv(table) {
+      width: 350px;
+      height: 250px;
     }
   }
 }
@@ -34,10 +45,28 @@
     height: 450px;
   }
 
+  @include global.adaptiv(table) {
+    width: 350px;
+    height: 250px;
+  }
+
   &__visible {
     opacity: 1;
     display: block;
     animation: map__open 0.3s ease-in-out;
+  }
+}
+
+.map__iframe {
+  position: relative;
+  border-radius: 7px;
+  border: none;
+  width: 760px;
+  height: 600px;
+
+  @include global.adaptiv(table) {
+    width: 350px;
+    height: 250px;
   }
 }
 

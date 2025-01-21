@@ -19,7 +19,7 @@ function InfoBlock({ img, text, orientation }) {
       { threshold: 0.1 }
     );
 
-    const currentBlock = blockRef.current; // Сохраняем значение в переменной
+    const currentBlock = blockRef.current;
 
     if (currentBlock) {
       observer.observe(currentBlock);

@@ -1,15 +1,9 @@
 import PropTypes from "prop-types";
+import style from "./style.module.scss";
 
 function VideoPlayer({ src }) {
   return (
-    <div
-      style={{
-        position: "relative",
-        height: "80%",
-        width: "75%",
-        borderRadius: "7px",
-      }}
-    >
+    <div className={style.video__player__video}>
       <iframe
         src={src}
         allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write;"

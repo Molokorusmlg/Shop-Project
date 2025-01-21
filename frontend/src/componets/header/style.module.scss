@@ -5,6 +5,7 @@
   padding: 10px;
   border-radius: 0px 0px 7px 7px;
   position: fixed;
+  background-color: #2020209c;
   top: 0;
   width: 100%;
   z-index: 2;
@@ -19,6 +20,8 @@
     border-radius: 7px;
     text-decoration: none;
     font-size: 25px;
+    position: relative;
+    z-index: 3;
     cursor: pointer;
 
     @include global.adaptiv(table) {
@@ -28,7 +31,9 @@
 
   &__burger {
     display: none;
+    position: relative;
     transition: 0.3s ease-in-out;
+    z-index: 3;
 
     &:hover {
       border: 1px solid #646cff;
@@ -44,6 +49,8 @@
       cursor: pointer;
       width: 30px;
       height: 30px;
+      position: relative;
+      z-index: 3;
     }
   }
 
@@ -56,6 +63,8 @@
     border: 1px solid #313131;
     transition: 0.4s ease-in-out;
     text-decoration: none;
+    position: relative;
+    z-index: 3;
 
     &:hover {
       border-color: #646cff;
@@ -65,17 +74,21 @@
       width: 30px;
       height: 30px;
       border-radius: 50px;
+      z-index: 3;
     }
 
     &__user {
       color: #fff;
       font-size: 10px;
+      z-index: 3;
     }
   }
 
   &__nav {
     @include global.flex(row, space-between, center);
+    position: relative;
     gap: 55px;
+    z-index: 3;
 
     @include global.adaptiv(table) {
       display: none;
@@ -87,4 +100,5 @@
   position: sticky;
   background-color: #202020;
   padding: 5px;
+  z-index: 3;
 }

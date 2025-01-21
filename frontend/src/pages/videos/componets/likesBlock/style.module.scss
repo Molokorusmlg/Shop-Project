@@ -8,6 +8,10 @@
   border-radius: 12px;
   cursor: pointer;
 
+  @include global.adaptiv(mobile) {
+    width: 400px;
+  }
+
   &__grade {
     @include global.flex(row, none, center);
     gap: 20px;

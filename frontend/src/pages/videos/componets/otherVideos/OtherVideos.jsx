@@ -9,7 +9,7 @@ function OtherVideos({ ignoreid }) {
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
-  const containerRef = useRef(null); // Реф для контейнера
+  const containerRef = useRef(null);
 
   const fetchOtherVideos = useCallback(
     async (pageNum = 1) => {
@@ -38,6 +38,8 @@ function OtherVideos({ ignoreid }) {
   );
 
   useEffect(() => {
+    setOtherVideoList([]);
+    setPage(1);
     fetchOtherVideos(1);
   }, [ignoreid, fetchOtherVideos]);
 
@@ -77,8 +79,8 @@ function OtherVideos({ ignoreid }) {
           username={video.username}
         />
       ))}
-      {isLoading && <div>Loading...</div>} {/* Индикатор загрузки */}
-      {error && <div>Error loading videos</div>} {/* Сообщение об ошибке */}
+      {isLoading && <div>Loading...</div>}
+      {error && <div>Error loading videos</div>}
     </div>
   );
 }

@@ -20,6 +20,11 @@
     opacity: 1;
   }
 
+  @include global.adaptiv(mobile) {
+    width: auto;
+    height: 100px;
+  }
+
   &__info {
     @include global.flex(column, none, none);
     width: 250px;
@@ -29,17 +34,29 @@
 
     &__username {
       font-weight: 700;
+
+      @include global.adaptiv(mobile) {
+        font-size: 12px;
+      }
     }
 
     &__title {
       font-size: 15px;
       font-weight: 800;
+
+      @include global.adaptiv(mobile) {
+        font-size: 14px;
+      }
     }
   }
 
   &__img {
     width: 250px;
     height: 175px;
+
+    @include global.adaptiv(mobile) {
+      height: 100px;
+    }
 
     &__photo {
       width: 100%;

@@ -26,6 +26,12 @@
     );
   background-size: var(--gap) var(--gap);
 
+  @include global.adaptiv(table) {
+    height: auto;
+    flex-direction: column;
+    gap: 30px;
+  }
+
   &__button {
     @include global.flex(row, center, center);
     border: 3px solid #646cff;
@@ -61,6 +67,11 @@
     &__block {
       @include global.flex(row, space-between, center);
       width: 50%;
+
+      @include global.adaptiv(table) {
+        flex-direction: column;
+        gap: 20px;
+      }
     }
   }
 

@@ -11,6 +11,10 @@
     opacity: 1;
   }
 
+  @include global.adaptiv("medium-pc") {
+    height: auto;
+  }
+
   &__title {
     font-size: 40px;
 
@@ -34,6 +38,11 @@
     height: 90%;
     position: relative;
     gap: 30px;
+
+    @include global.adaptiv("medium-pc") {
+      flex-direction: column;
+      margin-bottom: 30px;
+    }
   }
 }
 

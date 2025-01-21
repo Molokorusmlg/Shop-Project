@@ -4,16 +4,30 @@
   &__title {
     max-width: 50%;
     word-wrap: break-word;
+
+    @include global.adaptiv(mobile) {
+      font-size: 15px;
+      max-width: 100%;
+    }
   }
 
   &__text {
     font-size: 17px;
     max-width: 50%;
+
+    @include global.adaptiv(mobile) {
+      font-size: 13px;
+      max-width: 100%;
+    }
   }
 
   &__block {
     @include global.flex(row, space-between, none);
     gap: 50px;
+
+    @include global.adaptiv(small-pc) {
+      flex-direction: column;
+    }
   }
 
   &__imges {
@@ -33,6 +47,11 @@
         -moz-box-shadow: 0px 0px 100px 3px rgba(49, 30, 157, 0.48);
         box-shadow: 0px 0px 100px 3px rgba(49, 30, 157, 0.48);
         opacity: 1;
+      }
+
+      @include global.adaptiv(big_mobile) {
+        width: 100%;
+        height: 300px;
       }
     }
   }

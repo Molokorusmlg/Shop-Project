@@ -17,6 +17,10 @@
       border-color: #646cff;
     }
 
+    @include global.adaptiv(small-pc) {
+      width: 100%;
+    }
+
     &__form {
       @include global.flex(column, center, center);
       gap: 15px;

@@ -4,14 +4,11 @@ import Videos from "./pages/videos/Videos";
 import AllVideos from "./pages/allVideos/AllVideos";
 import UserProfile from "./pages/userProfile/UserProfile";
 import Create from "./pages/create/Create";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  HashRouter,
-} from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 
+const queryClient = new QueryClient();
 const routes = [
   { path: "/", element: <MyForm /> },
   { path: "/main", element: <HomePage /> },
@@ -24,13 +21,19 @@ const routes = [
 function App() {
   return (
     <div className="App">
-      <Router>
-        <Routes>
-          {routes.map((route) => (
-            <Route key={route.path} path={route.path} element={route.element} />
-          ))}
-        </Routes>
-      </Router>
+      <QueryClientProvider client={queryClient}>
+        <Router>
+          <Routes>
+            {routes.map((route) => (
+              <Route
+                key={route.path}
+                path={route.path}
+                element={route.element}
+              />
+            ))}
+          </Routes>
+        </Router>
+      </QueryClientProvider>
     </div>
   );
 }

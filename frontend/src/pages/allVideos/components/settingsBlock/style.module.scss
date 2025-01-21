@@ -25,11 +25,21 @@
     width: 50px;
     height: 50px;
 
+    @include global.adaptiv(mobile) {
+      width: 30px;
+      height: 30px;
+    }
+
     &__button {
       width: 30px;
       height: 30px;
       transition: 0.3s ease-in-out;
       cursor: pointer;
+
+      @include global.adaptiv(mobile) {
+        width: 20px;
+        height: 20px;
+      }
 
       &__reverse {
         rotate: 180deg;

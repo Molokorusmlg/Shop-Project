@@ -1,7 +1,6 @@
 import style from "./style.module.scss";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-// import TestImg from "../../../../assets/img/1905year.jpg";
 
 function OtherVideoLink({ id, title, img, username }) {
   return (

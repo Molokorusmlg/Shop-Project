@@ -5,6 +5,8 @@
     text-decoration: none;
     color: #fff;
     font-size: 20px;
+    position: relative;
+    z-index: 3;
 
     @include global.adaptiv(table) {
       font-size: 15px;
@@ -12,6 +14,8 @@
 
     &__block {
       @include global.flex(column, center, center);
+      position: relative;
+      z-index: 3;
 
       &:hover .main__header__nav__link__line {
         opacity: 1;
@@ -25,6 +29,8 @@
       background-color: #646cff;
       opacity: 0;
       transition: 0.3s ease-in-out;
+      position: relative;
+      z-index: 3;
     }
   }
 }

@@ -12,9 +12,17 @@
   overflow: hidden;
   transition: all 0.6s ease-in-out;
 
+  @include global.adaptiv(large-pc) {
+    width: 100%;
+  }
+
   &__additional {
     @include global.flex(row, none, center);
     gap: 50px;
+
+    @include global.adaptiv(table) {
+      gap: 16px;
+    }
   }
 
   &__open {
@@ -32,6 +40,12 @@
   background-color: #303030;
   border-radius: 12px;
 
+  @include global.adaptiv(table) {
+    width: 30px;
+    height: 30px;
+    padding: 2px;
+  }
+
   &__block {
     @include global.flex(row, center, center);
     width: 100%;
@@ -44,6 +58,11 @@
     width: 30px;
     height: 30px;
     transition: 0.2s ease-in-out;
+
+    @include global.adaptiv(mobile) {
+      width: 20px;
+      height: 20px;
+    }
 
     &__reverse {
       rotate: 90deg;

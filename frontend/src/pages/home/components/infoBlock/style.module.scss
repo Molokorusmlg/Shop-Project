@@ -7,11 +7,10 @@
   opacity: 0;
 
   @include global.adaptiv(table) {
-    height: 250px;
+    height: auto;
   }
 
   &:hover .info__block__orientation {
-    width: 85%;
     border-color: #515afd8f;
 
     @include global.adaptiv(table) {
@@ -34,8 +33,9 @@
     cursor: pointer;
 
     @include global.adaptiv(table) {
-      width: 99%;
-      height: 250px;
+      width: 100%;
+      flex-direction: column;
+      padding: 10px;
     }
   }
 
@@ -49,6 +49,8 @@
 
     @include global.adaptiv(table) {
       font-size: 13px;
+      text-align: center;
+      max-width: 400px;
     }
   }
 
@@ -59,7 +61,8 @@
     cursor: pointer;
 
     @include global.adaptiv(table) {
-      width: 450px;
+      width: 350px;
+      border-radius: 7px;
     }
   }
 }
@@ -68,6 +71,11 @@
   flex-direction: row-reverse;
   padding-left: 30px;
   padding-right: 0px;
+
+  @include global.adaptiv(table) {
+    flex-direction: column;
+    padding: 10px;
+  }
 }
 
 .img__reverse {
