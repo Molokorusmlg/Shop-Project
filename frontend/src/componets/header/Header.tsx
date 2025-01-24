@@ -4,14 +4,15 @@ import style from "./style.module.scss";
 import HeaderLink from "./components/headerLink/headerLink.jsx";
 import BurgerMeny from "./components/burgerMenu/BurgerMeny.js";
 import cn from "classnames";
-import { UserContext } from "../../userContex";
 import { useLocation } from "react-router-dom";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
 import * as React from "react";
 
 function Header() {
-  const { user } = useContext(UserContext);
+  const user = useSelector((state: RootState) => state.user);
 
   const [isBurgerOpen, setIsBurgerOpen] = useState(true);
 

@@ -1,8 +1,10 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { useContext, useEffect } from "react";
-import { UserContext } from "../../../userContex";
+import { useEffect } from "react";
 import { API_URL_USERS } from "../../../constants";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../../store";
+import { setUser } from "../../../userSlice";
 import style from "../style.module.scss";
 import * as React from "react";
 
@@ -14,9 +16,9 @@ interface IFormRegistation {
 }
 
 function RegistartionForm() {
-  const { user, updateUser } = useContext(UserContext);
-
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const user = useSelector((state: RootState) => state.user);
 
   const getId = async () => {
     const response = await fetch(`${API_URL_USERS}?email=${user.email}`, {
@@ -40,15 +42,16 @@ function RegistartionForm() {
 
     console.log(response);
 
-    updateUser({
-      email: data.email,
-      firstName: data.firstName,
-      lastName: data.lastName,
-      avatar: "",
-      password: data.password,
-      id: await getId(),
-    });
-
+    dispatch(
+      setUser({
+        email: data.email,
+        firstName: data.firstName,
+        lastName: data.lastName,
+        avatar: "",
+        password: data.password,
+        id: await getId(),
+      })
+    );
     navigate("/main");
   };
 

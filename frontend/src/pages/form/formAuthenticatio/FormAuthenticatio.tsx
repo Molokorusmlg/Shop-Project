@@ -1,9 +1,11 @@
-import { useContext, useEffect } from "react";
-import { UserContext } from "../../../userContex";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { API_URL_USERS } from "../../../constants";
 import { useNavigate } from "react-router-dom";
 import style from "../style.module.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../../store";
+import { setUser } from "../../../userSlice";
 import * as React from "react";
 
 interface IFormAuthenticatio {
@@ -12,7 +14,8 @@ interface IFormAuthenticatio {
 }
 
 function AuthenticatioForm() {
-  const { user, updateUser } = useContext(UserContext);
+  const user = useSelector((state: RootState) => state.user);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const resetData = () => {
@@ -47,9 +50,8 @@ function AuthenticatioForm() {
       }
 
       const userData = await response.json();
-      console.log(userData);
 
-      updateUser(userData[0]);
+      dispatch(setUser(userData[0]));
       console.log(user);
 
       navigate("/main");

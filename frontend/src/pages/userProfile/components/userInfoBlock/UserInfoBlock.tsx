@@ -1,12 +1,15 @@
-import { useContext, useRef } from "react";
-import { UserContext } from "../../../../userContex";
+import { useRef } from "react";
 import { API_URL_USERS } from "../../../../constants";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../../../store";
+import { setUser } from "../../../../userSlice";
 import style from "./style.module.scss";
 import UserDefaltIcon from "../../../../assets/img/userDefault.svg";
 import * as React from "react";
 
 function UserInfoBlock() {
-  const { user, updateUser } = useContext(UserContext);
+  const dispatch = useDispatch();
+  const user = useSelector((state: RootState) => state.user);
   const formRef = useRef<HTMLFormElement>(null);
 
   const userUpdateFetch = (e: React.FormEvent<HTMLFormElement>) => {
@@ -29,7 +32,7 @@ function UserInfoBlock() {
           return response.json();
         })
         .then((data) => {
-          updateUser(data);
+          dispatch(setUser(data));
         })
         .catch((error) => {
           console.error("Error:", error);

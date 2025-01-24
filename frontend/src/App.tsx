@@ -6,7 +6,6 @@ import UserProfile from "./pages/userProfile/UserProfile";
 import Create from "./pages/create/Create";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { UserProvider } from "./userContex";
 import "./App.css";
 import * as React from "react";
 
@@ -23,21 +22,19 @@ const routes = [
 function App() {
   return (
     <div className="App">
-      <UserProvider>
-        <QueryClientProvider client={queryClient}>
-          <Router>
-            <Routes>
-              {routes.map((route) => (
-                <Route
-                  key={route.path}
-                  path={route.path}
-                  element={route.element}
-                />
-              ))}
-            </Routes>
-          </Router>
-        </QueryClientProvider>
-      </UserProvider>
+      <QueryClientProvider client={queryClient}>
+        <Router>
+          <Routes>
+            {routes.map((route) => (
+              <Route
+                key={route.path}
+                path={route.path}
+                element={route.element}
+              />
+            ))}
+          </Routes>
+        </Router>
+      </QueryClientProvider>
     </div>
   );
 }
