@@ -32,9 +32,8 @@ function AllVideos() {
       try {
         const response = await fetch(request);
 
-        if (!response.ok) {
+        if (!response.ok)
           throw new Error(`HTTP error! status: ${response.status}`);
-        }
 
         const data: IVideo[] = await response.json();
         setVideoList((prev) => {

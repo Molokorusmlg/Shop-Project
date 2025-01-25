@@ -3,10 +3,12 @@ import { useState } from "react";
 import cn from "classnames";
 import RegistartionForm from "./formRegistration/FormRegistration";
 import AuthenticatioForm from "./formAuthenticatio/FormAuthenticatio";
+import Loading from "../../componets/loading/Loading";
 import * as React from "react";
 
 const MyForm = () => {
   const [isRegister, setIsRegister] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const authClass = isRegister ? "register" : "authenticatio";
   const isAuthClassRegister = authClass === "register";
 
@@ -54,7 +56,12 @@ const MyForm = () => {
           </div>
         </div>
       </div>
-      {isAuthClassRegister ? <RegistartionForm /> : <AuthenticatioForm />}
+      {isAuthClassRegister ? (
+        <RegistartionForm setIsLoading={setIsLoading} />
+      ) : (
+        <AuthenticatioForm setIsLoading={setIsLoading} />
+      )}
+      <Loading isLoading={isLoading} />
     </div>
   );
 };

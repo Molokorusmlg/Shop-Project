@@ -7,12 +7,17 @@ import style from "./style.module.scss";
 import UserDefaltIcon from "../../../../assets/img/userDefault.svg";
 import * as React from "react";
 
-function UserInfoBlock() {
+interface IUserInfoBlock {
+  setIsLoading: Function;
+}
+
+function UserInfoBlock({ setIsLoading }: IUserInfoBlock) {
   const dispatch = useDispatch();
   const user = useSelector((state: RootState) => state.user);
   const formRef = useRef<HTMLFormElement>(null);
 
   const userUpdateFetch = (e: React.FormEvent<HTMLFormElement>) => {
+    setIsLoading(true);
     e.preventDefault();
     if (formRef.current) {
       const formData = new FormData(formRef.current);
@@ -27,15 +32,18 @@ function UserInfoBlock() {
       })
         .then((response) => {
           if (!response.ok) {
+            setIsLoading(false);
             throw new Error("Network response was not ok");
           }
           return response.json();
         })
         .then((data) => {
           dispatch(setUser(data));
+          setIsLoading(false);
         })
         .catch((error) => {
           console.error("Error:", error);
+          setIsLoading(false);
         });
     }
   };

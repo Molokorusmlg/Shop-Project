@@ -13,7 +13,11 @@ interface IFormAuthenticatio {
   passwordsign: string;
 }
 
-function AuthenticatioForm() {
+interface IAuthenticatioForm {
+  setIsLoading: Function;
+}
+
+function AuthenticatioForm({ setIsLoading }: IAuthenticatioForm) {
   const user = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -34,6 +38,7 @@ function AuthenticatioForm() {
   };
 
   const getUserFetch = async (data: IFormAuthenticatio) => {
+    setIsLoading(true);
     try {
       const response = await fetch(
         `${API_URL_USERS}?email=${data.emailsign}&password=${data.passwordsign}`,
@@ -46,13 +51,15 @@ function AuthenticatioForm() {
       );
 
       if (!response.ok) {
+        setIsLoading(false);
         throw new Error("Network response was not ok");
       }
 
       const userData = await response.json();
 
       dispatch(setUser(userData[0]));
-      console.log(user);
+
+      setIsLoading(false);
 
       navigate("/main");
     } catch (error) {

@@ -1,10 +1,11 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { API_URL_USERS } from "../../../constants";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../store";
 import { setUser } from "../../../userSlice";
+import Loading from "../../../componets/loading/Loading";
 import style from "../style.module.scss";
 import * as React from "react";
 
@@ -15,7 +16,11 @@ interface IFormRegistation {
   password: string;
 }
 
-function RegistartionForm() {
+interface IRegistartionForm {
+  setIsLoading: Function;
+}
+
+function RegistartionForm({ setIsLoading }: IRegistartionForm) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((state: RootState) => state.user);
@@ -31,6 +36,7 @@ function RegistartionForm() {
     return data[0].id;
   };
   const postUser = async (data: IFormRegistation) => {
+    setIsLoading(true);
     const response = await fetch(API_URL_USERS, {
       method: "POST",
       headers: {
@@ -38,7 +44,7 @@ function RegistartionForm() {
       },
       body: JSON.stringify({ ...data }),
     });
-    if (!response.ok) return;
+    if (!response.ok) return setIsLoading(false);
 
     console.log(response);
 
@@ -52,6 +58,7 @@ function RegistartionForm() {
         id: await getId(),
       })
     );
+    setIsLoading(false);
     navigate("/main");
   };
 
